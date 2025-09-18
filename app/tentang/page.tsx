@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import Gedung from '@/public/image.png'
 
 const TentangPage = () => {
   const sidebarItems = [
@@ -15,19 +16,19 @@ const TentangPage = () => {
     <div className="min-h-screen bg-gray-50">
       
       {/* Header */}
-      <header className="bg-gradient-to-r from-blue-600 to-blue-700 text-white pt-24 pb-8">
+      <header className="bg-gradient-to-r from-[#1c2c66] to-[#2a3b7a] text-white pt-24 pb-8">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-center mb-4">
-            <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4">
-              <span className="text-xl font-bold">S</span>
+            <div className="w-12 h-12 bg-[#f8cb8b]/20 rounded-lg flex items-center justify-center mr-4">
+              <span className="text-xl font-bold text-[#f8cb8b]">S</span>
             </div>
             <div>
               <h1 className="text-3xl font-bold">Tentang Satuan Kerja</h1>
-              <p className="text-blue-100 mt-1">Sistem Informasi Bapas Surakarta</p>
+              <p className="text-gray-300 mt-1">Sistem Informasi Bapas Surakarta</p>
             </div>
           </div>
           
-          <nav className="text-sm text-blue-100 flex items-center">
+          <nav className="text-sm text-gray-300 flex items-center">
             <Link href="/" className="hover:text-white transition-colors">Beranda</Link>
             <span className="mx-2">/</span>
             <Link href="/tentang" className="hover:text-white transition-colors">Tentang Satuan Kerja</Link>
@@ -42,7 +43,7 @@ const TentangPage = () => {
           {/* Sidebar */}
           <aside className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 sticky top-24">
-              <h2 className="text-lg font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-200">
+              <h2 className="text-lg font-semibold text-[#1c2c66] mb-4 pb-2 border-b border-gray-200">
                 Tentang Satuan Kerja
               </h2>
               <ul className="space-y-2">
@@ -52,8 +53,8 @@ const TentangPage = () => {
                       href={item.href} 
                       className={`block py-2 px-3 rounded-md transition-colors text-sm ${
                         item.href === '/tentang' 
-                          ? 'bg-blue-100 text-blue-700 font-medium border-l-4 border-blue-600' 
-                          : 'text-gray-600 hover:bg-gray-100 hover:text-blue-600'
+                          ? 'bg-[#f8cb8b]/20 text-[#1c2c66] font-medium border-l-4 border-[#1c2c66]' 
+                          : 'text-gray-600 hover:bg-[#f8cb8b]/10 hover:text-[#1c2c66]'
                       }`}
                     >
                       {item.title}
@@ -71,15 +72,15 @@ const TentangPage = () => {
               <div className="relative h-64 w-full">
                 <Image
                   src="/placeholder-history.jpg"
-                  alt="Sejarah Pemasyarakatan"
+                  alt=""
                   fill
                   className="object-cover"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-800/90 to-blue-700/90 flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#1c2c66]/90 to-[#2a3b7a]/90 flex items-center justify-center">
                   <div className="text-center">
                     <h2 className="text-3xl font-bold text-white mb-2">Sejarah Pemasyarakatan</h2>
-                    <p className="text-blue-100">Perjalanan panjang sistem pemasyarakatan di Indonesia</p>
+                    <p className="text-gray-300">Perjalanan panjang sistem pemasyarakatan di Indonesia</p>
                   </div>
                 </div>
               </div>
@@ -99,10 +100,10 @@ const TentangPage = () => {
                   <div className="flex justify-center my-8">
                     <div className="relative w-full max-w-2xl h-64">
                       <Image
-                        src="/placeholder-old-building.jpg"
+                        src={Gedung}
                         alt="Gedung Bapas Lama"
                         fill
-                        className="object-cover rounded-lg shadow-md"
+                        className="object-cover rounded-lg shadow-sm border border-gray-200"
                       />
                     </div>
                   </div>
@@ -111,7 +112,7 @@ const TentangPage = () => {
                     Namun sesuai perkembangan kondisi, tugas dan fungsi berdasarkan Undang-Undang Nomor: 12 tahun 1995 tentang Pemasyarakatan, istilah Bispa diganti menjadi Bapas.
                   </p>
 
-                  <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-4 border-b border-gray-200 pb-2">
+                  <h3 className="text-xl font-semibold text-[#1c2c66] mt-8 mb-4 border-b border-gray-200 pb-2">
                     Bapas Kelas I Surakarta
                   </h3>
 
@@ -124,9 +125,9 @@ const TentangPage = () => {
                   </p>
 
                   {/* Info Box */}
-                  <div className="bg-blue-50 p-6 rounded-lg mt-8 border border-blue-200">
-                    <h4 className="text-lg font-semibold text-blue-800 mb-3 flex items-center">
-                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
+                  <div className="bg-[#f8cb8b]/20 p-6 rounded-lg mt-8 border border-[#f8cb8b]/30">
+                    <h4 className="text-lg font-semibold text-[#1c2c66] mb-3 flex items-center">
+                      <span className="w-2 h-2 bg-[#1c2c66] rounded-full mr-2"></span>
                       Informasi Penting
                     </h4>
                     <ul className="list-disc list-inside text-gray-700 space-y-2 text-sm">

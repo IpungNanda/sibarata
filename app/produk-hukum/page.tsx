@@ -71,26 +71,27 @@ const ProdukHukumPage = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#1c2c66]"></div>
       </div>
     );
   }
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-gray-50 min-h-screen">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="mb-8"
+        className="mb-8 text-center"
       >
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Produk Hukum</h1>
+        <h1 className="text-3xl font-bold text-[#1c2c66] mb-2">Produk Hukum</h1>
+        <div className="w-24 h-1 bg-[#f8cb8b] mx-auto mb-4 rounded-full"></div>
         <p className="text-gray-600">Kumpulan peraturan dan undang-undang yang berlaku</p>
       </motion.div>
 
       {/* Search & Filter */}
-      <div className="bg-white rounded-xl shadow-sm p-6 mb-8 border border-gray-100">
+      <div className="bg-white rounded-lg shadow-sm p-6 mb-8 border border-gray-200">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
           <div className="relative flex-grow">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -99,7 +100,7 @@ const ProdukHukumPage = () => {
             <input
               type="text"
               placeholder="Cari produk hukum..."
-              className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1c2c66] focus:border-[#1c2c66]"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -107,7 +108,7 @@ const ProdukHukumPage = () => {
 
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className="flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+            className="flex items-center justify-center gap-2 px-4 py-2.5 bg-[#f8cb8b]/20 hover:bg-[#f8cb8b]/30 rounded-lg transition-colors text-[#1c2c66]"
           >
             <FiFilter className="h-5 w-5" />
             <span>Filter</span>
@@ -119,7 +120,7 @@ const ProdukHukumPage = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="pt-4 border-t border-gray-100"
+            className="pt-4 border-t border-gray-200"
           >
             <div className="flex flex-col sm:flex-row gap-4">
               <div className="flex items-center gap-2">
@@ -127,7 +128,7 @@ const ProdukHukumPage = () => {
                 <select
                   value={yearFilter}
                   onChange={(e) => setYearFilter(e.target.value)}
-                  className="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-[#1c2c66] focus:border-[#1c2c66]"
                 >
                   <option value="">Semua Tahun</option>
                   {uniqueYears.map((year) => (
@@ -153,10 +154,10 @@ const ProdukHukumPage = () => {
       </div>
 
       {/* Info hasil */}
-      <div className="flex justify-between items-center mb-6 text-gray-700">
+      <div className="flex justify-between items-center mb-6 text-gray-700 bg-white p-4 rounded-lg shadow-sm border border-gray-200">
         <p>
-          Menampilkan <span className="font-bold">{filteredProdukHukum.length}</span> dari{" "}
-          {produkHukum.length} produk hukum
+          Menampilkan <span className="font-bold text-[#1c2c66]">{filteredProdukHukum.length}</span> dari{" "}
+          <span className="font-bold text-[#1c2c66]">{produkHukum.length}</span> produk hukum
           {(searchTerm || yearFilter) && <span className="text-sm text-gray-500"> (difilter)</span>}
         </p>
       </div>
@@ -170,14 +171,14 @@ const ProdukHukumPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100 hover:shadow-md transition-shadow"
+              className="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200 hover:shadow-md transition-all duration-300"
             >
               <div className="p-6">
                 <div className="flex items-start mb-4">
-                  <div className="bg-blue-100 p-3 rounded-lg mr-4 flex-shrink-0">
-                    <FiFileText className="w-6 h-6 text-blue-600" />
+                  <div className="bg-[#f8cb8b]/20 p-3 rounded-lg mr-4 flex-shrink-0">
+                    <FiFileText className="w-6 h-6 text-[#1c2c66]" />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 line-clamp-3">
+                  <h3 className="text-lg font-semibold text-[#1c2c66] line-clamp-3">
                     {item.judul}
                   </h3>
                 </div>
@@ -186,19 +187,19 @@ const ProdukHukumPage = () => {
                   <span>Tahun: {item.tahun}</span>
                 </div>
                 <a
-                    href={`/produk-hukum/${item.id}`} // arahkan ke halaman detail user
-                    className="text-blue-600 hover:underline flex items-center"
-                    >
-                    <FiExternalLink className="mr-1" /> Lihat Detail
+                  href={`/produk-hukum/${item.id}`}
+                  className="text-[#1c2c66] hover:text-[#1c2c66]/80 font-medium flex items-center"
+                >
+                  <FiExternalLink className="mr-1" /> Lihat Detail
                 </a>
               </div>
             </motion.div>
           ))}
         </div>
       ) : (
-        <div className="text-center py-12 bg-white rounded-xl shadow-sm border border-gray-100">
+        <div className="text-center py-12 bg-white rounded-lg shadow-sm border border-gray-200">
           <FiFileText className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-          <h3 className="text-lg font-medium text-gray-900 mb-2">Tidak ada produk hukum ditemukan</h3>
+          <h3 className="text-lg font-medium text-[#1c2c66] mb-2">Tidak ada produk hukum ditemukan</h3>
           <p className="text-gray-500">
             {searchTerm || yearFilter
               ? "Coba ubah kata kunci pencarian atau filter tahun yang digunakan"
@@ -207,7 +208,7 @@ const ProdukHukumPage = () => {
           {(searchTerm || yearFilter) && (
             <button
               onClick={clearFilters}
-              className="mt-4 inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
+              className="mt-4 inline-flex items-center text-[#1c2c66] hover:text-[#1c2c66]/80 font-medium"
             >
               Hapus filter
             </button>

@@ -46,8 +46,8 @@ const Services = () => {
       <section id="layanan" className="py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Layanan</h2>
-            <div className="w-24 h-1 bg-blue-500 mx-auto mb-6 rounded-full"></div>
+            <h2 className="text-3xl font-bold text-[#1c2c66] mb-4">Layanan</h2>
+            <div className="w-24 h-1 bg-[#f8cb8b] mx-auto mb-6 rounded-full"></div>
             <div className="h-4 bg-gray-300 rounded w-64 mx-auto"></div>
           </div>
           
@@ -75,8 +75,8 @@ const Services = () => {
           transition={{ duration: 0.7 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">Layanan</h2>
-          <div className="w-24 h-1 bg-blue-500 mx-auto mb-6 rounded-full"></div>
+          <h2 className="text-3xl font-bold text-[#1c2c66] mb-4">Layanan</h2>
+          <div className="w-24 h-1 bg-[#f8cb8b] mx-auto mb-6 rounded-full"></div>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Akses berbagai layanan publik yang tersedia untuk masyarakat dengan mudah dan cepat.
           </p>
@@ -92,11 +92,11 @@ const Services = () => {
               whileHover={{ y: -5 }}
               className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300 text-center group"
             >
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-200 transition-colors">
+              <div className="w-12 h-12 bg-[#f8cb8b]/20 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-[#f8cb8b]/30 transition-colors">
                 {getIconComponent(item.icon)}
               </div>
               
-              <h3 className="text-lg font-semibold text-gray-800 mb-3">
+              <h3 className="text-lg font-semibold text-[#1c2c66] mb-3">
                 {item.nama}
               </h3>
               
@@ -106,7 +106,7 @@ const Services = () => {
               
               <a
                 href={item.link}
-                className="text-blue-600 hover:text-blue-700 font-medium text-sm flex items-center justify-center transition-colors group-hover:underline"
+                className="text-[#1c2c66] hover:text-[#1c2c66]/80 font-medium text-sm flex items-center justify-center transition-colors group-hover:underline"
               >
                 Akses Layanan
                 <FiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />

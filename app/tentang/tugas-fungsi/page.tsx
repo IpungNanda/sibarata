@@ -15,32 +15,32 @@ const TugasFungsiPage = () => {
 
   const tugasFungsiItems = [
     {
-      icon: <FiClipboard className="text-2xl text-blue-600" />,
+      icon: <FiClipboard className="text-2xl text-[#1c2c66]" />,
       title: "Penelitian Kemasyarakatan (Litmas)",
       description: "Membuat penelitian kemasyarakatan (litmas) untuk bahan sidang peradilan anak, litmas bimbingan dan litmas integrasi"
     },
     {
-      icon: <FiBook className="text-2xl text-blue-600" />,
+      icon: <FiBook className="text-2xl text-[#1c2c66]" />,
       title: "Registrasi Klien Pemasyarakatan",
       description: "Melakukan registrasi klien pemasyarakatan"
     },
     {
-      icon: <FiUsers className="text-2xl text-blue-600" />,
+      icon: <FiUsers className="text-2xl text-[#1c2c66]" />,
       title: "Bimbingan Kemasyarakatan",
       description: "Melakukan bimbingan kemasyarakatan dan pengentasan anak"
     },
     {
-      icon: <FiFileText className="text-2xl text-blue-600" />,
+      icon: <FiFileText className="text-2xl text-[#1c2c66]" />,
       title: "Kehadiran di Sidang Pengadilan",
       description: "Mengikuti sidang pengadilan di Pengadilan Negeri dan sidang Tim Pengamat Pemasyarakatan di Lembaga Pemasyarakatan sesuai dengan peraturan perundang-undangan yang berlaku"
     },
     {
-      icon: <FiHelpCircle className="text-2xl text-blue-600" />,
+      icon: <FiHelpCircle className="text-2xl text-[#1c2c66]" />,
       title: "Bimbingan dan Bantuan",
       description: "Memberi bantuan bimbingan kepada bekas narapidana, anak Negara dan Klien pemasyarakatan yang memerlukan"
     },
     {
-      icon: <FiCheckCircle className="text-2xl text-blue-600" />,
+      icon: <FiCheckCircle className="text-2xl text-[#1c2c66]" />,
       title: "Tata Usaha",
       description: "Melakukan urusan tata usaha Bapas Surakarta"
     }
@@ -48,15 +48,15 @@ const TugasFungsiPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="bg-blue-800 text-white pt-20 pb-12">
+      <header className="bg-gradient-to-r from-[#1c2c66] to-[#2a3b7a] text-white pt-20 pb-12">
         <div className="max-w-6xl mx-auto px-4">
           <h1 className="text-4xl font-bold mb-4">Tentang Satuan Kerja</h1>
-          <nav className="text-sm text-blue-100">
+          <nav className="text-sm text-gray-300">
             <Link href="/" className="hover:text-white transition-colors">Beranda</Link>
             <span className="mx-2">/</span>
             <Link href="/tentang" className="hover:text-white transition-colors">Tentang Satuan Kerja</Link>
             <span className="mx-2">/</span>
-            <span>Kedudukan, Tugas dan Fungsi</span>
+            <span className="text-white">Kedudukan, Tugas dan Fungsi</span>
           </nav>
         </div>
       </header>
@@ -64,8 +64,8 @@ const TugasFungsiPage = () => {
       <main className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           <aside className="lg:col-span-1">
-            <div className="bg-white rounded-lg shadow-md p-6 sticky top-24">
-              <h2 className="text-xl font-semibold text-gray-800 mb-4">Tentang Satuan Kerja</h2>
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 sticky top-24">
+              <h2 className="text-xl font-semibold text-[#1c2c66] mb-4">Tentang Satuan Kerja</h2>
               <ul className="space-y-2">
                 {sidebarItems.map((item, index) => (
                   <li key={index}>
@@ -73,8 +73,8 @@ const TugasFungsiPage = () => {
                       href={item.href} 
                       className={`block py-2 px-4 rounded-md transition-colors ${
                         item.href === '/tentang/tugas-fungsi' 
-                          ? 'bg-blue-100 text-blue-800 font-medium' 
-                          : 'text-gray-700 hover:bg-gray-100'
+                          ? 'bg-[#f8cb8b]/20 text-[#1c2c66] font-medium' 
+                          : 'text-gray-700 hover:bg-[#f8cb8b]/10 hover:text-[#1c2c66]'
                       }`}
                     >
                       {item.title}
@@ -86,15 +86,15 @@ const TugasFungsiPage = () => {
           </aside>
 
           <div className="lg:col-span-3">
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="bg-gradient-to-r from-blue-600 to-blue-800 p-8 text-white">
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+              <div className="bg-gradient-to-r from-[#1c2c66] to-[#2a3b7a] p-8 text-white">
                 <h1 className="text-3xl font-bold mb-2">TUGAS DAN FUNGSI ORGANISASI</h1>
-                <p className="text-blue-100">Struktur dan Tanggung Jawab Bapas Kelas I Surakarta</p>
+                <p className="text-gray-300">Struktur dan Tanggung Jawab Bapas Kelas I Surakarta</p>
               </div>
 
               <div className="p-8">
                 <div className="prose max-w-none">
-                  <div className="bg-blue-50 border-l-4 border-blue-600 p-6 mb-8">
+                  <div className="bg-[#f8cb8b]/20 border-l-4 border-[#1c2c66] p-6 mb-8">
                     <p className="text-gray-700 italic">
                       Tugas, Fungsi dan Struktur Organisasi Bapas Surakarta adalah sebagai berikut:
                     </p>
@@ -105,10 +105,10 @@ const TugasFungsiPage = () => {
                     {tugasFungsiItems.map((item, index) => (
                       <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-200 hover:shadow-md transition-shadow">
                         <div className="flex items-start mb-4">
-                          <div className="bg-blue-100 p-3 rounded-full mr-4">
+                          <div className="bg-[#f8cb8b]/20 p-3 rounded-full mr-4">
                             {item.icon}
                           </div>
-                          <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
+                          <h3 className="text-lg font-semibold text-[#1c2c66]">{item.title}</h3>
                         </div>
                         <p className="text-gray-600 text-sm">{item.description}</p>
                       </div>
@@ -117,10 +117,10 @@ const TugasFungsiPage = () => {
 
                   {/* Struktur Organisasi */}
                   <div className="mb-8">
-                    <h2 className="text-2xl font-bold text-gray-800 mb-4">Struktur Organisasi Bapas Surakarta</h2>
-                    <div className="bg-gray-50 rounded-lg p-6">
+                    <h2 className="text-2xl font-bold text-[#1c2c66] mb-4">Struktur Organisasi Bapas Surakarta</h2>
+                    <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                       <div className="text-center mb-6">
-                        <div className="bg-blue-600 text-white py-3 px-6 rounded-t-lg">
+                        <div className="bg-[#1c2c66] text-white py-3 px-6 rounded-t-lg">
                           <h3 className="font-semibold">Kepala Bapas</h3>
                         </div>
                         <div className="border border-gray-200 border-t-0 rounded-b-lg p-4">
@@ -131,7 +131,7 @@ const TugasFungsiPage = () => {
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         {/* Sub Bagian Tata Usaha */}
                         <div className="text-center">
-                          <div className="bg-blue-500 text-white py-2 px-4 rounded-t-lg">
+                          <div className="bg-[#1c2c66]/90 text-white py-2 px-4 rounded-t-lg">
                             <h4 className="font-semibold text-sm">Sub Bagian Tata Usaha</h4>
                           </div>
                           <div className="border border-gray-200 border-t-0 rounded-b-lg p-3">
@@ -145,7 +145,7 @@ const TugasFungsiPage = () => {
 
                         {/* Seksi Bimbingan Klien Pemasyarakatan */}
                         <div className="text-center">
-                          <div className="bg-blue-500 text-white py-2 px-4 rounded-t-lg">
+                          <div className="bg-[#1c2c66]/90 text-white py-2 px-4 rounded-t-lg">
                             <h4 className="font-semibold text-sm">Seksi Bimbingan Klien Pemasyarakatan</h4>
                           </div>
                           <div className="border border-gray-200 border-t-0 rounded-b-lg p-3">
@@ -159,7 +159,7 @@ const TugasFungsiPage = () => {
 
                         {/* Seksi Pengamatan dan Penelitian Kemasyarakatan */}
                         <div className="text-center">
-                          <div className="bg-blue-500 text-white py-2 px-4 rounded-t-lg">
+                          <div className="bg-[#1c2c66]/90 text-white py-2 px-4 rounded-t-lg">
                             <h4 className="font-semibold text-sm">Seksi Pengamatan dan Penelitian Kemasyarakatan</h4>
                           </div>
                           <div className="border border-gray-200 border-t-0 rounded-b-lg p-3">
@@ -175,8 +175,8 @@ const TugasFungsiPage = () => {
                   </div>
 
                   {/* Informasi Tambahan */}
-                  <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-2">Dasar Hukum</h3>
+                  <div className="bg-[#f8cb8b]/20 border-l-4 border-[#1c2c66] p-6">
+                    <h3 className="text-lg font-semibold text-[#1c2c66] mb-2">Dasar Hukum</h3>
                     <p className="text-gray-600 text-sm">
                       Seluruh tugas dan fungsi Bapas Surakarta dilaksanakan berdasarkan peraturan perundang-undangan yang berlaku, termasuk Undang-Undang Nomor 12 Tahun 1995 tentang Pemasyarakatan dan peraturan pelaksanaannya.
                     </p>

@@ -1,3 +1,4 @@
+// components/SidebarAdmin.tsx
 'use client';
 
 import Link from 'next/link';
@@ -8,7 +9,7 @@ import {
   FiSettings, 
   FiInfo, 
   FiBook, 
-  FiLogOut 
+  FiUsers
 } from 'react-icons/fi';
 
 const SidebarAdmin = () => {
@@ -16,10 +17,10 @@ const SidebarAdmin = () => {
 
   const menuItems = [
     { href: '/admin', label: 'Dashboard', icon: <FiHome /> },
-    { href: '/admin/berita', label: 'Berita', icon: <FiFileText /> },
     { href: '/admin/layanan', label: 'Layanan', icon: <FiSettings /> },
     { href: '/admin/informasi', label: 'Informasi Publik', icon: <FiInfo /> },
     { href: '/admin/produk-hukum', label: 'Produk Hukum', icon: <FiBook /> },
+    { href: '/admin/petugas', label: 'Petugas', icon: <FiUsers /> },
   ];
 
   return (

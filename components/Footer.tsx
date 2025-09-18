@@ -60,16 +60,16 @@ const Footer = () => {
               dan informasi publik.
             </p>
             <div className="flex space-x-3">
-              <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors p-2 hover:bg-blue-50 rounded-lg">
+              <a href="#" className="text-gray-400 hover:text-[#1c2c66] transition-colors p-2 hover:bg-[#f8cb8b]/20 rounded-lg">
                 <FiFacebook className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors p-2 hover:bg-blue-50 rounded-lg">
+              <a href="#" className="text-gray-400 hover:text-[#1c2c66] transition-colors p-2 hover:bg-[#f8cb8b]/20 rounded-lg">
                 <FiTwitter className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors p-2 hover:bg-blue-50 rounded-lg">
+              <a href="#" className="text-gray-400 hover:text-[#1c2c66] transition-colors p-2 hover:bg-[#f8cb8b]/20 rounded-lg">
                 <FiInstagram className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors p-2 hover:bg-blue-50 rounded-lg">
+              <a href="#" className="text-gray-400 hover:text-[#1c2c66] transition-colors p-2 hover:bg-[#f8cb8b]/20 rounded-lg">
                 <FiYoutube className="w-5 h-5" />
               </a>
             </div>
@@ -81,7 +81,7 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h4 className="text-lg font-semibold text-gray-800 mb-6 pb-2 border-b border-gray-200">
+            <h4 className="text-lg font-semibold text-[#1c2c66] mb-6 pb-2 border-b border-gray-200">
               Tautan Cepat
             </h4>
             <ul className="space-y-3">
@@ -89,9 +89,9 @@ const Footer = () => {
                 <li key={link.title}>
                   <Link 
                     href={link.href}
-                    className="text-gray-600 hover:text-blue-600 transition-colors text-sm flex items-center group"
+                    className="text-gray-600 hover:text-[#1c2c66] transition-colors text-sm flex items-center group"
                   >
-                    <FiArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <FiArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity text-[#f8cb8b]" />
                     {link.title}
                   </Link>
                 </li>
@@ -105,7 +105,7 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h4 className="text-lg font-semibold text-gray-800 mb-6 pb-2 border-b border-gray-200">
+            <h4 className="text-lg font-semibold text-[#1c2c66] mb-6 pb-2 border-b border-gray-200">
               Layanan 
             </h4>
             <ul className="space-y-3">
@@ -113,7 +113,7 @@ const Footer = () => {
                 <li key={service.title}>
                   <Link 
                     href={service.href}
-                    className="text-gray-600 hover:text-blue-600 transition-colors text-sm"
+                    className="text-gray-600 hover:text-[#1c2c66] transition-colors text-sm"
                   >
                     {service.title}
                   </Link>
@@ -128,22 +128,22 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h4 className="text-lg font-semibold text-gray-800 mb-6 pb-2 border-b border-gray-200">
+            <h4 className="text-lg font-semibold text-[#1c2c66] mb-6 pb-2 border-b border-gray-200">
               Kontak Kami
             </h4>
             <div className="space-y-4">
               <div className="flex items-start">
-                <FiMapPin className="w-5 h-5 text-blue-600 mr-3 mt-0.5 flex-shrink-0" />
+                <FiMapPin className="w-5 h-5 text-[#1c2c66] mr-3 mt-0.5 flex-shrink-0" />
                 <span className="text-gray-600 text-sm">
                   Jl. Barata No. 123, Kota Surakarta
                 </span>
               </div>
               <div className="flex items-center">
-                <FiPhone className="w-5 h-5 text-blue-600 mr-3 flex-shrink-0" />
+                <FiPhone className="w-5 h-5 text-[#1c2c66] mr-3 flex-shrink-0" />
                 <span className="text-gray-600 text-sm">+62 812 3456 7890</span>
               </div>
               <div className="flex items-center">
-                <FiMail className="w-5 h-5 text-blue-600 mr-3 flex-shrink-0" />
+                <FiMail className="w-5 h-5 text-[#1c2c66] mr-3 flex-shrink-0" />
                 <span className="text-gray-600 text-sm">info@sibarata.go.id</span>
               </div>
             </div>

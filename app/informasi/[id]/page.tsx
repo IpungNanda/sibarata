@@ -52,52 +52,64 @@ export default function DetailInformasiPage() {
     fetchData();
   }, [id, router]);
 
-  if (loading) return <div className="p-6">Memuat...</div>;
-  if (!data) return <div className="p-6">Informasi tidak ditemukan</div>;
+  if (loading) return <div className="p-6 bg-gray-50 min-h-screen flex items-center justify-center">Memuat...</div>;
+  if (!data) return <div className="p-6 bg-gray-50 min-h-screen flex items-center justify-center">Informasi tidak ditemukan</div>;
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
+    <div className="p-6 max-w-4xl mx-auto bg-gray-50 min-h-screen">
       {/* Tombol kembali */}
       <Link
         href="/#informasi"
-        className="inline-flex items-center text-primary-600 mb-6 hover:underline"
+        className="inline-flex items-center text-[#1c2c66] mb-6 hover:text-[#1c2c66]/80 hover:underline font-medium"
       >
-        <FiArrowLeft className="mr-2" /> Kembali
+        <FiArrowLeft className="mr-2" /> Kembali ke Informasi
       </Link>
 
-      {/* Gambar Full */}
-      {data.gambar && (
-        <div className="w-full rounded-xl overflow-hidden shadow-md border mb-8">
-          <img
-            src={data.gambar}
-            alt={data.judul}
-            className="w-full h-auto object-cover"
-          />
+      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+        {/* Gambar Full */}
+        {data.gambar && (
+          <div className="w-full rounded-lg overflow-hidden shadow-sm border border-gray-200 mb-8">
+            <img
+              src={data.gambar}
+              alt={data.judul}
+              className="w-full h-auto object-cover"
+            />
+          </div>
+        )}
+
+        {/* Header */}
+        <div className="mb-6">
+          {data.kategori && (
+            <span className="inline-block px-3 py-1 bg-[#f8cb8b]/20 text-[#1c2c66] text-sm rounded-full mb-4">
+              {data.kategori}
+            </span>
+          )}
+          
+          <h1 className="text-3xl font-bold text-[#1c2c66] mb-3">{data.judul}</h1>
+
+          {/* Info meta */}
+          <div className="flex flex-wrap items-center text-sm text-gray-500 gap-4">
+            <span>
+              {data.tanggal
+                ? data.tanggal.toLocaleString('id-ID', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                  })
+                : '-'}
+            </span>
+          </div>
         </div>
-      )}
 
-      {/* Judul */}
-      <h1 className="text-3xl font-bold mb-3">{data.judul}</h1>
+        {/* Garis pembatas */}
+        <div className="w-24 h-1 bg-[#f8cb8b] mb-6 rounded-full"></div>
 
-      {/* Info meta */}
-      <div className="flex flex-wrap items-center text-sm text-gray-500 mb-6 gap-4">
-        <span>Kategori: {data.kategori || '-'}</span>
-        <span>
-          {data.tanggal
-            ? data.tanggal.toLocaleString('id-ID', {
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-              })
-            : '-'}
-        </span>
-      </div>
-
-      {/* Isi konten */}
-      <div className="prose prose-blue max-w-none text-gray-700 leading-relaxed whitespace-pre-line">
-        {data.isi}
+        {/* Isi konten */}
+        <div className="prose max-w-none text-gray-700 leading-relaxed whitespace-pre-line">
+          {data.isi}
+        </div>
       </div>
     </div>
   );

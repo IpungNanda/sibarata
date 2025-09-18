@@ -1,9 +1,7 @@
 import Link from 'next/link';
-import Navbar from '@/components/Navbar';
 import { FiHome, FiWifi, FiMonitor , FiBook, FiPrinter, FiServer, FiShield, FiCpu, FiVideo } from 'react-icons/fi';
 import Image from 'next/image';
 import { FaCar } from "react-icons/fa";
-import Footer from '@/components/Footer';
 
 const SaranaPrasaranaPage = () => {
   const sidebarItems = [
@@ -18,7 +16,7 @@ const SaranaPrasaranaPage = () => {
   const facilities = [
     {
       category: "Gedung dan Ruangan",
-      icon: <FiHome className="text-2xl" />,
+      icon: <FiHome className="text-2xl text-[#1c2c66]" />,
       items: [
         { name: "Gedung Utama", description: "Gedung 3 lantai dengan area kerja modern" },
         { name: "Ruang Kepala Bapas", description: "Ruang kerja pimpinan yang representatif" },
@@ -30,7 +28,7 @@ const SaranaPrasaranaPage = () => {
     },
     {
       category: "Teknologi Informasi",
-      icon: <FiCpu className="text-2xl" />,
+      icon: <FiCpu className="text-2xl text-[#1c2c66]" />,
       items: [
         { name: "Jaringan Internet", description: "Koneksi fiber optic 100 Mbps" },
         { name: "Server Lokal", description: "Data center dengan redundansi" },
@@ -42,7 +40,7 @@ const SaranaPrasaranaPage = () => {
     },
     {
       category: "Kendaraan Operasional",
-      icon: <FaCar className="text-2xl" />,
+      icon: <FaCar className="text-2xl text-[#1c2c66]" />,
       items: [
         { name: "Mobil Dinas", description: "Kendaraan operasional lapangan" },
         { name: "Motor Operasional", description: "Kendaraan cepat untuk mobilitas" },
@@ -52,7 +50,7 @@ const SaranaPrasaranaPage = () => {
     },
     {
       category: "Peralatan Kantor",
-      icon: <FiPrinter className="text-2xl" />,
+      icon: <FiPrinter className="text-2xl text-[#1c2c66]" />,
       items: [
         { name: "Printer & Scanner", description: "Multifunction devices" },
         { name: "Photocopy", description: "Mesin fotokopi high-speed" },
@@ -63,7 +61,7 @@ const SaranaPrasaranaPage = () => {
     },
     {
       category: "Fasilitas Pendukung",
-      icon: <FiShield className="text-2xl" />,
+      icon: <FiShield className="text-2xl text-[#1c2c66]" />,
       items: [
         { name: "Sistem CCTV", description: "Pengawasan 24 jam" },
         { name: "Access Control", description: "Sistem keamanan pintu" },
@@ -74,7 +72,7 @@ const SaranaPrasaranaPage = () => {
     },
     {
       category: "Fasilitas Kesejahteraan",
-      icon: <FiBook className="text-2xl" />,
+      icon: <FiBook className="text-2xl text-[#1c2c66]" />,
       items: [
         { name: "Musholla", description: "Tempat ibadah yang nyaman" },
         { name: "Kantin", description: "Area makan dan istirahat" },
@@ -95,16 +93,16 @@ const SaranaPrasaranaPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-blue-800 text-white pt-20 pb-12">
+    <div className="min-h-screen bg-gray-50"> 
+      <header className="bg-gradient-to-r from-[#1c2c66] to-[#2a3b7a] text-white pt-20 pb-12">
         <div className="max-w-6xl mx-auto px-4">
           <h1 className="text-4xl font-bold mb-4">Tentang Satuan Kerja</h1>
-          <nav className="text-sm text-blue-100">
+          <nav className="text-sm text-gray-300">
             <Link href="/" className="hover:text-white transition-colors">Beranda</Link>
             <span className="mx-2">/</span>
             <Link href="/tentang" className="hover:text-white transition-colors">Tentang Satuan Kerja</Link>
             <span className="mx-2">/</span>
-            <span>Sarana dan Prasarana</span>
+            <span className="text-white">Sarana dan Prasarana</span>
           </nav>
         </div>
       </header>
@@ -112,8 +110,8 @@ const SaranaPrasaranaPage = () => {
       <main className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           <aside className="lg:col-span-1">
-            <div className="bg-white rounded-lg shadow-md p-6 sticky top-24">
-              <h2 className="text-xl font-semibold text-gray-800 mb-4">Tentang Satuan Kerja</h2>
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 sticky top-24">
+              <h2 className="text-xl font-semibold text-[#1c2c66] mb-4">Tentang Satuan Kerja</h2>
               <ul className="space-y-2">
                 {sidebarItems.map((item, index) => (
                   <li key={index}>
@@ -121,8 +119,8 @@ const SaranaPrasaranaPage = () => {
                       href={item.href} 
                       className={`block py-2 px-4 rounded-md transition-colors ${
                         item.href === '/tentang/sarana-prasarana' 
-                          ? 'bg-blue-100 text-blue-800 font-medium' 
-                          : 'text-gray-700 hover:bg-gray-100'
+                          ? 'bg-[#f8cb8b]/20 text-[#1c2c66] font-medium' 
+                          : 'text-gray-700 hover:bg-[#f8cb8b]/10 hover:text-[#1c2c66]'
                       }`}
                     >
                       {item.title}
@@ -134,13 +132,13 @@ const SaranaPrasaranaPage = () => {
           </aside>
 
           <div className="lg:col-span-3">
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="bg-gradient-to-r from-blue-600 to-blue-800 p-8 text-white">
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+              <div className="bg-gradient-to-r from-[#1c2c66] to-[#2a3b7a] p-8 text-white">
                 <div className="flex items-center">
                   <FiHome className="text-3xl mr-4" />
                   <div>
                     <h1 className="text-3xl font-bold mb-2">Sarana dan Prasarana</h1>
-                    <p className="text-blue-100">Fasilitas Penunjang Pelayanan Bapas Kelas I Surakarta</p>
+                    <p className="text-gray-300">Fasilitas Penunjang Pelayanan Bapas Kelas I Surakarta</p>
                   </div>
                 </div>
               </div>
@@ -158,8 +156,8 @@ const SaranaPrasaranaPage = () => {
                 {/* Statistics */}
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
                   {stats.map((stat, index) => (
-                    <div key={index} className="bg-blue-50 rounded-lg p-4 text-center">
-                      <div className="text-2xl font-bold text-blue-600 mb-1">{stat.number}</div>
+                    <div key={index} className="bg-[#f8cb8b]/20 rounded-lg p-4 text-center border border-[#f8cb8b]/30">
+                      <div className="text-2xl font-bold text-[#1c2c66] mb-1">{stat.number}</div>
                       <div className="text-sm text-gray-600">{stat.label}</div>
                     </div>
                   ))}
@@ -169,24 +167,24 @@ const SaranaPrasaranaPage = () => {
                 <div className="space-y-8">
                   {facilities.map((facility, index) => (
                     <div key={index} className="border border-gray-200 rounded-lg overflow-hidden">
-                      <div className="bg-gray-50 px-6 py-4 border-b border-gray-200">
+                      <div className="bg-[#f8cb8b]/20 px-6 py-4 border-b border-[#f8cb8b]/30">
                         <div className="flex items-center">
-                          <div className="bg-blue-100 p-2 rounded-full mr-3">
+                          <div className="bg-white p-2 rounded-full mr-3">
                             {facility.icon}
                           </div>
-                          <h2 className="text-xl font-semibold text-gray-800">{facility.category}</h2>
+                          <h2 className="text-xl font-semibold text-[#1c2c66]">{facility.category}</h2>
                         </div>
                       </div>
                       
                       <div className="p-6">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           {facility.items.map((item, itemIndex) => (
-                            <div key={itemIndex} className="flex items-start p-4 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors">
-                              <div className="bg-white p-2 rounded-full mr-4">
-                                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                            <div key={itemIndex} className="flex items-start p-4 bg-gray-50 rounded-lg hover:bg-[#f8cb8b]/10 transition-colors border border-gray-200">
+                              <div className="bg-[#1c2c66] p-2 rounded-full mr-4">
+                                <div className="w-2 h-2 bg-white rounded-full"></div>
                               </div>
                               <div>
-                                <h3 className="font-semibold text-gray-800 mb-1">{item.name}</h3>
+                                <h3 className="font-semibold text-[#1c2c66] mb-1">{item.name}</h3>
                                 <p className="text-sm text-gray-600">{item.description}</p>
                               </div>
                             </div>
@@ -199,9 +197,9 @@ const SaranaPrasaranaPage = () => {
 
                 {/* Gallery Section */}
                 <div className="mt-12">
-                  <h2 className="text-2xl font-bold text-gray-800 mb-6">Galeri Fasilitas</h2>
+                  <h2 className="text-2xl font-bold text-[#1c2c66] mb-6">Galeri Fasilitas</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div className="relative h-48 rounded-lg overflow-hidden">
+                    <div className="relative h-48 rounded-lg overflow-hidden border border-gray-200">
                       <Image
                         src="/placeholder-building.jpg"
                         alt="Gedung Utama Bapas"
@@ -212,7 +210,7 @@ const SaranaPrasaranaPage = () => {
                         <span className="text-white font-semibold">Gedung Utama</span>
                       </div>
                     </div>
-                    <div className="relative h-48 rounded-lg overflow-hidden">
+                    <div className="relative h-48 rounded-lg overflow-hidden border border-gray-200">
                       <Image
                         src="/placeholder-meeting.jpg"
                         alt="Ruang Rapat"
@@ -223,7 +221,7 @@ const SaranaPrasaranaPage = () => {
                         <span className="text-white font-semibold">Ruang Rapat</span>
                       </div>
                     </div>
-                    <div className="relative h-48 rounded-lg overflow-hidden">
+                    <div className="relative h-48 rounded-lg overflow-hidden border border-gray-200">
                       <Image
                         src="/placeholder-computer.jpg"
                         alt="Ruang Komputer"
@@ -238,8 +236,8 @@ const SaranaPrasaranaPage = () => {
                 </div>
 
                 {/* Maintenance Info */}
-                <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-lg mt-8">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">Pemeliharaan Fasilitas</h3>
+                <div className="bg-[#f8cb8b]/20 border-l-4 border-[#1c2c66] p-6 rounded-r-lg mt-8">
+                  <h3 className="text-lg font-semibold text-[#1c2c66] mb-2">Pemeliharaan Fasilitas</h3>
                   <p className="text-gray-600 text-sm">
                     Semua sarana dan prasarana dilakukan pemeliharaan rutin dan berkala untuk 
                     memastikan ketersediaan dan keandalan dalam mendukung pelayanan. Laporan 
@@ -248,15 +246,15 @@ const SaranaPrasaranaPage = () => {
                 </div>
 
                 {/* Contact Support */}
-                <div className="bg-blue-50 rounded-lg p-6 mt-6">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-4">Dukungan Teknis</h3>
+                <div className="bg-[#f8cb8b]/20 rounded-lg p-6 mt-6 border border-[#f8cb8b]/30">
+                  <h3 className="text-lg font-semibold text-[#1c2c66] mb-4">Dukungan Teknis</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <h4 className="font-semibold text-gray-700 mb-2">IT Support</h4>
+                      <h4 className="font-semibold text-[#1c2c66] mb-2">IT Support</h4>
                       <p className="text-sm text-gray-600">Ext. 123 • itsupport@bapassurakarta.go.id</p>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-700 mb-2">General Affairs</h4>
+                      <h4 className="font-semibold text-[#1c2c66] mb-2">General Affairs</h4>
                       <p className="text-sm text-gray-600">Ext. 124 • ga@bapassurakarta.go.id</p>
                     </div>
                   </div>
@@ -267,7 +265,7 @@ const SaranaPrasaranaPage = () => {
         </div>
       </main>
       <div>
-        </div>
+      </div>
     </div>
   );
 };

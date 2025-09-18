@@ -53,12 +53,23 @@ const LegalProducts = () => {
 
   if (loading) {
     return (
-      <section id="produk-hukum" className="py-16">
+      <section id="produk-hukum" className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Produk Hukum</h2>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-[#1c2c66] mb-4">Produk Hukum</h2>
+            <div className="w-24 h-1 bg-[#f8cb8b] mx-auto mb-6 rounded-full"></div>
+            <div className="h-4 bg-gray-300 rounded w-96 mx-auto"></div>
+          </div>
+          
+          <div className="flex flex-wrap justify-center gap-4 mb-8">
+            {years.map((year) => (
+              <div key={year.value} className="px-4 py-2 bg-gray-300 rounded-lg animate-pulse w-24 h-10"></div>
+            ))}
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[1, 2, 3, 4, 5, 6].map((item) => (
-              <div key={item} className="bg-white rounded-lg shadow-md p-6 animate-pulse">
+              <div key={item} className="bg-white rounded-lg shadow-sm p-6 animate-pulse border border-gray-200">
                 <div className="h-6 bg-gray-300 rounded mb-4"></div>
                 <div className="h-4 bg-gray-300 rounded mb-2"></div>
                 <div className="h-4 bg-gray-300 rounded mb-2"></div>
@@ -72,7 +83,7 @@ const LegalProducts = () => {
   }
 
   return (
-    <section id="produk-hukum" className="py-16">
+    <section id="produk-hukum" className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -80,9 +91,10 @@ const LegalProducts = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Produk Hukum</h2>
+          <h2 className="text-3xl font-bold text-[#1c2c66] mb-4">Produk Hukum</h2>
+          <div className="w-24 h-1 bg-[#f8cb8b] mx-auto mb-6 rounded-full"></div>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Akses berbagai peraturan dan produk hukum yang berlaku di lingkungan Barata.
+            Akses berbagai peraturan dan produk hukum yang berlaku di lingkungan Bapas Surakarta.
           </p>
         </motion.div>
 
@@ -98,8 +110,8 @@ const LegalProducts = () => {
               onClick={() => setSelectedYear(year.value)}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 selectedYear === year.value
-                  ? 'bg-primary-600 text-white'
-                  : 'bg-white text-gray-700 hover:bg-gray-100'
+                  ? 'bg-[#1c2c66] text-white'
+                  : 'bg-white text-gray-700 hover:bg-[#f8cb8b]/20 border border-gray-300'
               }`}
             >
               {year.label}
@@ -114,24 +126,24 @@ const LegalProducts = () => {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
+              className="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-all duration-300 border border-gray-200"
             >
               <div className="flex items-start justify-between mb-4">
-                <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                  <FiFileText className="w-6 h-6 text-primary-600" />
+                <div className="w-12 h-12 bg-[#f8cb8b]/20 rounded-lg flex items-center justify-center">
+                  <FiFileText className="w-6 h-6 text-[#1c2c66]" />
                 </div>
                 {item.file && (
                   <a
                     href={item.file}
                     download
-                    className="p-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors"
+                    className="p-2 bg-[#f8cb8b]/20 text-[#1c2c66] rounded-lg hover:bg-[#f8cb8b]/30 transition-colors"
                   >
                     <FiDownload className="w-5 h-5" />
                   </a>
                 )}
               </div>
 
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+              <h3 className="text-xl font-semibold text-[#1c2c66] mb-2">
                 {item.judul}
               </h3>
               
@@ -158,7 +170,7 @@ const LegalProducts = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="text-center mt-12"
         >
-          <button className="bg-primary-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors">
+          <button className="bg-[#1c2c66] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#1c2c66]/90 transition-colors">
             Lihat Semua Produk Hukum
           </button>
         </motion.div>

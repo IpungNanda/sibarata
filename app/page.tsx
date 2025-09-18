@@ -3,7 +3,6 @@ import Hero from '@/components/Hero';
 import News from '@/components/News';
 import Services from '@/components/Service';
 import PublicInfo from '@/components/PublicInfo';
-import LegalProducts from '@/components/LegalProducts';
 import WhatsAppBot from '@/components/WhatsAppBot';
 import Footer from '@/components/Footer';
 import StatistikSection from '@/components/Petugas';

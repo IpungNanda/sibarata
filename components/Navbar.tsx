@@ -34,18 +34,8 @@ const Navbar = () => {
         { title: 'Mars Pemasyarakatan', href: '/tentang/mars' },
         { title: 'Corporate University', href: '/tentang/corporate-university' },
         { title: 'Sarana dan Prasarana', href: '/tentang/sarana-prasarana' },
-        { 
-          title: 'PIMPINAN SATUAN KERJA', 
-          href: '#',
-          icon: <FiUser className="mr-2" />
-        },
         { title: 'Profil Pejabat', href: '/pimpinan/profil' },
         { title: 'Sambutan Kapala Satuan Kerja', href: '/pimpinan/sambutan' },
-        { 
-          title: 'KEPALA UNIT SATUAN KERJA', 
-          href: '#',
-          icon: <FiUser className="mr-2" />
-        },
       ]
     },
     { title: 'Berita', href: '#berita' },
@@ -67,58 +57,67 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-md fixed w-full z-50 border-b border-gray-200">
+    <nav className="bg-white shadow-sm fixed w-full z-50 border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link href="/" className="flex-shrink-0">
-              <Image
-                src={Logo}
-                alt="Sibarata Logo"
-                width={1200}
-                height={1200}
-                className="h-10 w-auto"
-                priority
-              />
+            <Link href="/" className="flex-shrink-0 flex items-center">
+              <div className="p-1 rounded-lg">
+                <Image
+                  src={Logo}
+                  alt="Sibarata Logo"
+                  width={1200}
+                  height={1200}
+                  className="h-10 w-auto"
+                  priority
+                />
+              </div>
             </Link>
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden md:flex items-center space-x-0">
             {menuItems.map((item) => (
               <div key={item.title} className="relative group">
                 {item.href ? (
                   <Link
                     href={item.href}
-                    className="px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors flex items-center font-medium"
+                    className="px-3 py-2 text-gray-700 hover:text-[#1c2c66] transition-colors flex items-center font-medium text-sm rounded-md mx-1 hover:bg-[#f8cb8b]/20"
                   >
                     {item.title}
                   </Link>
                 ) : (
                   <button
                     onClick={() => toggleSubmenu(item.title)}
-                    className="px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors flex items-center font-medium"
+                    className="px-3 py-2 text-gray-700 hover:text-[#1c2c66] transition-colors flex items-center font-medium text-sm rounded-md mx-1 hover:bg-[#f8cb8b]/20"
                   >
                     {item.title}
-                    <FiChevronDown className={`ml-1 transition-transform ${openSubmenu === item.title ? 'rotate-180' : ''}`} />
+                    <motion.div
+                      animate={{ rotate: openSubmenu === item.title ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <FiChevronDown className="ml-1 text-xs" />
+                    </motion.div>
                   </button>
                 )}
                 
                 {item.submenu && openSubmenu === item.title && (
                   <motion.div
-                    initial={{ opacity: 0, y: -10 }}
+                    initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg py-2 z-50 border border-gray-200"
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute left-0 mt-1 w-60 bg-white rounded-lg shadow-lg py-2 z-50 border border-gray-100 overflow-hidden"
                   >
-                    {item.submenu.map((subItem) => (
-                      <div key={subItem.title}>
+                    {item.submenu.map((subItem, index) => (
+                      <div key={subItem.title} className="border-b border-gray-100 last:border-b-0">
                         <Link
                           href={subItem.href}
-                          className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 text-sm transition-colors"
+                          className="flex items-center px-4 py-2 text-gray-700 hover:bg-[#f8cb8b]/30 hover:text-[#1c2c66] transition-all duration-200 text-sm"
                           onClick={() => setOpenSubmenu(null)}
                         >
-                          {subItem.title}
+                          {subItem.icon || <FiInfo className="mr-2 text-[#1c2c66] text-xs" />}
+                          <span>{subItem.title}</span>
                         </Link>
                       </div>
                     ))}
@@ -132,9 +131,9 @@ const Navbar = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-blue-600 focus:outline-none transition-colors"
+              className="text-[#1c2c66] p-2 rounded-lg hover:bg-[#f8cb8b]/30 focus:outline-none transition-colors"
             >
-              {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+              {isOpen ? <FiX size={20} /> : <FiMenu size={20} />}
             </button>
           </div>
         </div>
@@ -147,15 +146,16 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white shadow-lg border-t border-gray-200"
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-white shadow-xl border-t border-gray-100"
           >
-            <div className="px-4 py-2 space-y-1">
+            <div className="px-3 py-3 space-y-1">
               {menuItems.map((item) => (
-                <div key={item.title}>
+                <div key={item.title} className="border-b border-gray-100 last:border-b-0 pb-1 last:pb-0">
                   {item.href ? (
                     <Link
                       href={item.href}
-                      className="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors font-medium"
+                      className="block py-2 px-3 text-gray-700 hover:text-[#1c2c66] hover:bg-[#f8cb8b]/20 rounded-md transition-colors font-medium text-sm"
                       onClick={() => setIsOpen(false)}
                     >
                       {item.title}
@@ -164,26 +164,36 @@ const Navbar = () => {
                     <div>
                       <button
                         onClick={() => toggleSubmenu(item.title)}
-                        className="w-full flex justify-between items-center py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors font-medium"
+                        className="w-full flex justify-between items-center py-2 px-3 text-gray-700 hover:text-[#1c2c66] hover:bg-[#f8cb8b]/20 rounded-md transition-colors font-medium text-sm"
                       >
                         <span>{item.title}</span>
-                        <FiChevronDown className={`transition-transform ${openSubmenu === item.title ? 'rotate-180' : ''}`} />
+                        <motion.div
+                          animate={{ rotate: openSubmenu === item.title ? 180 : 0 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <FiChevronDown className="text-xs" />
+                        </motion.div>
                       </button>
                       
                       {item.submenu && openSubmenu === item.title && (
                         <motion.div
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          className="pl-6 space-y-1 border-l-2 border-blue-200 ml-4 mt-1"
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.2 }}
+                          className="pl-5 space-y-1 border-l-2 border-[#f8cb8b] ml-3 mt-1"
                         >
                           {item.submenu.map((subItem) => (
                             <div key={subItem.title}>
                               <Link
                                 href={subItem.href}
-                                className="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors text-sm"
+                                className="block py-2 px-3 text-gray-600 hover:text-[#1c2c66] hover:bg-[#f8cb8b]/20 rounded-md transition-colors text-xs"
                                 onClick={() => setIsOpen(false)}
                               >
-                                {subItem.title}
+                                <div className="flex items-center">
+                                  {subItem.icon || <FiInfo className="mr-2 text-xs" />}
+                                  {subItem.title}
+                                </div>
                               </Link>
                             </div>
                           ))}
