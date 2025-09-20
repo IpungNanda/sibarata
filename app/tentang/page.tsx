@@ -70,13 +70,6 @@ const TentangPage = () => {
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
               {/* Hero Image */}
               <div className="relative h-64 w-full">
-                <Image
-                  src="/placeholder-history.jpg"
-                  alt=""
-                  fill
-                  className="object-cover"
-                  priority
-                />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#1c2c66]/90 to-[#2a3b7a]/90 flex items-center justify-center">
                   <div className="text-center">
                     <h2 className="text-3xl font-bold text-white mb-2">Sejarah Pemasyarakatan</h2>

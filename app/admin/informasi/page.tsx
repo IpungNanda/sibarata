@@ -103,87 +103,148 @@ export default function InformasiPage() {
   };
 
   return (
-    <div className="p-6">
-      <h1 className="text-xl font-bold mb-4">Kelola Informasi</h1>
+    <div className="p-6 bg-gray-50 min-h-screen">
+      <div className="max-w-4xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <h1 className="text-3xl font-bold text-[#1c2c66] mb-2">Kelola Informasi</h1>
+          <div className="w-24 h-1 bg-[#f8cb8b] mx-auto rounded-full"></div>
+          <p className="text-gray-600 mt-2">Kelola informasi untuk website</p>
+        </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4 mb-8">
-        <input
-          type="text"
-          placeholder="Judul"
-          value={judul}
-          onChange={(e) => setJudul(e.target.value)}
-          className="border p-2 w-full"
-          required
-        />
-        <textarea
-          placeholder="Isi informasi"
-          value={isi}
-          onChange={(e) => setIsi(e.target.value)}
-          className="border p-2 w-full"
-          required
-        />
-
-        {/* Dropdown kategori */}
-        <select
-          value={kategori}
-          onChange={(e) => setKategori(e.target.value)}
-          className="border p-2 w-full"
-          required
-        >
-          <option value="">Pilih Kategori</option>
-          <option value="Umum">Umum</option>
-          <option value="Pengumuman">Pengumuman</option>
-          <option value="Penting">Penting</option>
-          <option value="Kegiatan">Kegiatan</option>
-        </select>
-
-        <input
-          type="file"
-          accept="image/*"
-          onChange={(e) => setGambar(e.target.files?.[0] || null)}
-          className="border p-2 w-full"
-        />
-        <button
-          type="submit"
-          className="px-4 py-2 bg-blue-600 text-white rounded"
-        >
-          {editId ? "Update Informasi" : "Tambah Informasi"}
-        </button>
-      </form>
-
-      <div className="grid gap-4">
-        {informasiList.map((item) => (
-          <div key={item.id} className="border p-4 rounded">
-            <h2 className="font-semibold">{item.judul}</h2>
-            <p>{item.isi}</p>
-            {item.kategori && (
-              <span className="text-sm text-gray-500">
-                Kategori: {item.kategori}
-              </span>
-            )}
-            {item.gambar && (
-              <img
-                src={item.gambar}
-                alt={item.judul}
-                className="w-32 h-32 object-cover mt-2"
-              />
-            )}
-            <div className="mt-2 space-x-2">
-              <button
-                onClick={() => handleEdit(item)}
-                className="px-3 py-1 bg-yellow-500 text-white rounded"
-              >
-                Edit
-              </button>
-              <button
-                onClick={() => handleDelete(item.id)}
-                className="px-3 py-1 bg-red-600 text-white rounded"
-              >
-                Hapus
-              </button>
-            </div>
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-lg shadow-sm border border-gray-200 mb-8">
+          <h2 className="text-xl font-semibold text-[#1c2c66] mb-4">
+            {editId ? "Edit Informasi" : "Tambah Informasi Baru"}
+          </h2>
+          
+          <div>
+            <label className="block text-sm font-medium text-[#1c2c66] mb-2">Judul</label>
+            <input
+              type="text"
+              placeholder="Judul informasi"
+              value={judul}
+              onChange={(e) => setJudul(e.target.value)}
+              className="border border-gray-300 rounded-lg p-3 w-full focus:ring-2 focus:ring-[#1c2c66] focus:border-transparent"
+              required
+            />
           </div>
-        ))}
+
+          <div>
+            <label className="block text-sm font-medium text-[#1c2c66] mb-2">Isi Informasi</label>
+            <textarea
+              placeholder="Isi informasi"
+              value={isi}
+              onChange={(e) => setIsi(e.target.value)}
+              className="border border-gray-300 rounded-lg p-3 w-full focus:ring-2 focus:ring-[#1c2c66] focus:border-transparent"
+              rows={4}
+              required
+            />
+          </div>
+
+          {/* Dropdown kategori */}
+          <div>
+            <label className="block text-sm font-medium text-[#1c2c66] mb-2">Kategori</label>
+            <select
+              value={kategori}
+              onChange={(e) => setKategori(e.target.value)}
+              className="border border-gray-300 rounded-lg p-3 w-full focus:ring-2 focus:ring-[#1c2c66] focus:border-transparent"
+              required
+            >
+              <option value="">Pilih Kategori</option>
+              <option value="Umum">Umum</option>
+              <option value="Pengumuman">Pengumuman</option>
+              <option value="Penting">Penting</option>
+              <option value="Kegiatan">Kegiatan</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-[#1c2c66] mb-2">Gambar</label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => setGambar(e.target.files?.[0] || null)}
+              className="border border-gray-300 rounded-lg p-3 w-full focus:ring-2 focus:ring-[#1c2c66] focus:border-transparent"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="px-6 py-3 bg-[#1c2c66] text-white rounded-lg hover:bg-[#1c2c66]/90 transition-colors font-medium w-full"
+          >
+            {editId ? "Update Informasi" : "Tambah Informasi"}
+          </button>
+
+          {editId && (
+            <button
+              type="button"
+              onClick={() => {
+                setEditId(null);
+                setJudul("");
+                setIsi("");
+                setKategori("");
+                setGambar(null);
+              }}
+              className="px-6 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors font-medium w-full"
+            >
+              Batal Edit
+            </button>
+          )}
+        </form>
+
+        {/* List Informasi */}
+        <div className="space-y-6">
+          <h2 className="text-2xl font-semibold text-[#1c2c66] mb-4">Daftar Informasi</h2>
+          
+          {informasiList.length === 0 ? (
+            <div className="text-center py-12 bg-white rounded-lg shadow-sm border border-gray-200">
+              <p className="text-gray-500">Belum ada informasi</p>
+            </div>
+          ) : (
+            informasiList.map((item) => (
+              <div key={item.id} className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                <div className="flex flex-col md:flex-row md:items-start gap-6">
+                  {item.gambar && (
+                    <img
+                      src={item.gambar}
+                      alt={item.judul}
+                      className="w-full md:w-48 h-48 object-cover rounded-lg"
+                    />
+                  )}
+                  
+                  <div className="flex-1">
+                    <h3 className="text-xl font-semibold text-[#1c2c66] mb-2">{item.judul}</h3>
+                    <p className="text-gray-700 mb-4 whitespace-pre-line">{item.isi}</p>
+                    
+                    <div className="flex flex-wrap items-center gap-4 mb-4">
+                      {item.kategori && (
+                        <span className="px-3 py-1 bg-[#f8cb8b]/20 text-[#1c2c66] rounded-full text-sm">
+                          {item.kategori}
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="flex gap-3">
+                      <button
+                        onClick={() => handleEdit(item)}
+                        className="px-4 py-2 bg-[#f8cb8b] text-[#1c2c66] rounded-lg hover:bg-[#f8cb8b]/90 transition-colors font-medium"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => handleDelete(item.id)}
+                        className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors font-medium"
+                      >
+                        Hapus
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
       </div>
     </div>
   );

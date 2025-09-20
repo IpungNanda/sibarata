@@ -1,7 +1,8 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import WhatsAppBot from "@/components/WhatsAppBot"; // Import komponen WhatsAppBot
+import WhatsAppBot from "@/components/WhatsAppBot";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +30,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        <WhatsAppBot /> {/* Tambahkan WhatsAppBot di sini */}
+        <WhatsAppBot />
       </body>
     </html>
   );

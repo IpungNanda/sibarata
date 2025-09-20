@@ -29,7 +29,7 @@ export default function AdminDashboard() {
           ]);
 
         // ambil data statistik dari dokumen
-        const statistikRef = doc(db, 'statistik', 'sibarata'); // misal dokumen bernama "sibarata"
+        const statistikRef = doc(db, 'statistik', 'sibarata');
         const statistikSnap = await getDoc(statistikRef);
 
         let statistikData = { litmas: 0, bimbingan: 0, petugas: 0 };
@@ -52,54 +52,88 @@ export default function AdminDashboard() {
   }, []);
 
   return (
-    <div>
-      <h1 className="text-2xl font-semibold text-gray-900 mb-6">Dashboard</h1>
+    <div className="p-6 bg-gray-50 min-h-screen">
+      {/* Header */}
+      <div className="text-center mb-8">
+        <h1 className="text-3xl font-bold text-gray-800 mb-2">Admin Dashboard</h1>
+        <div className="w-24 h-1 bg-amber-400 mx-auto rounded-full mb-4"></div>
+        <p className="text-gray-600">Ringkasan data dan statistik sistem</p>
+      </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Data umum */}
-        <AdminCard
-          title="Layanan"
-          count={counts.layanan}
-          icon={<FiSettings className="w-6 h-6" />}
-          color="bg-green-500"
-        
-        />
-        <AdminCard
-          title="Informasi Publik"
-          count={counts.informasi}
-          icon={<FiInfo className="w-6 h-6" />}
-          color="bg-purple-500"
-        />
-        <AdminCard
-          title="Produk Hukum"
-          count={counts.produkHukum}
-          icon={<FiBook className="w-6 h-6" />}
-          color="bg-orange-500"
-       
-        />
+        <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-gray-600">Layanan</p>
+              <p className="text-2xl font-bold text-gray-800">{counts.layanan}</p>
+            </div>
+            <div className="p-3 bg-blue-100 rounded-lg">
+              <FiSettings className="w-6 h-6 text-blue-600" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-gray-600">Informasi Publik</p>
+              <p className="text-2xl font-bold text-gray-800">{counts.informasi}</p>
+            </div>
+            <div className="p-3 bg-green-100 rounded-lg">
+              <FiInfo className="w-6 h-6 text-green-600" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-gray-600">Produk Hukum</p>
+              <p className="text-2xl font-bold text-gray-800">{counts.produkHukum}</p>
+            </div>
+            <div className="p-3 bg-purple-100 rounded-lg">
+              <FiBook className="w-6 h-6 text-purple-600" />
+            </div>
+          </div>
+        </div>
 
         {/* Data Statistik Sibarata */}
-        <AdminCard
-          title="Jumlah Litmas"
-          count={counts.litmas}
-          icon={<FiClipboard className="w-6 h-6" />}
-          color="bg-indigo-500"
-  
-        />
-        <AdminCard
-          title="Jumlah Bimbingan Klien"
-          count={counts.bimbingan}
-          icon={<FiUsers className="w-6 h-6" />}
-          color="bg-teal-500"
+        <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-gray-600">Jumlah Litmas</p>
+              <p className="text-2xl font-bold text-gray-800">{counts.litmas}</p>
+            </div>
+            <div className="p-3 bg-indigo-100 rounded-lg">
+              <FiClipboard className="w-6 h-6 text-indigo-600" />
+            </div>
+          </div>
+        </div>
 
-        />
-        <AdminCard
-          title="Jumlah Petugas Survey"
-          count={counts.petugas}
-          icon={<FiUserCheck className="w-6 h-6" />}
-          color="bg-pink-500"
-          
-        />
+        <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-gray-600">Bimbingan Klien</p>
+              <p className="text-2xl font-bold text-gray-800">{counts.bimbingan}</p>
+            </div>
+            <div className="p-3 bg-teal-100 rounded-lg">
+              <FiUsers className="w-6 h-6 text-teal-600" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-gray-600">Petugas Survey</p>
+              <p className="text-2xl font-bold text-gray-800">{counts.petugas}</p>
+            </div>
+            <div className="p-3 bg-pink-100 rounded-lg">
+              <FiUserCheck className="w-6 h-6 text-pink-600" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
