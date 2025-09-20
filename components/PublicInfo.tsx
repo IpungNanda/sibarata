@@ -1,3 +1,4 @@
+// publicinfo.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -34,11 +35,15 @@ export default function PublicInfo() {
             tanggalIso = dd.tanggal;
           }
 
+          // Normalisasi gambar
+          const gambarUrl =
+            dd?.gambar?.secure_url ?? dd?.gambar?.url ?? dd?.gambar ?? '';
+
           return {
             id: d.id,
             judul: dd.judul ?? '',
             isi: dd.isi ?? '',
-            gambar: dd.gambar ?? '',
+            gambar: gambarUrl,
             kategori: dd.kategori ?? '',
             tanggal: tanggalIso,
           } as Info;
@@ -118,13 +123,17 @@ export default function PublicInfo() {
                 transition={{ delay: idx * 0.05 }}
                 className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden flex flex-col hover:shadow-md transition-all duration-300"
               >
-                {item.gambar && (
+                {item.gambar ? (
                   <img
                     src={item.gambar}
                     alt={item.judul}
                     className="w-full h-48 object-cover"
+                    onError={(e) => {
+                      // Jika load gagal, sembunyikan elemen agar tidak tampil broken image
+                      (e.target as HTMLImageElement).style.display = "none";
+                    }}
                   />
-                )}
+                ) : null}
                 <div className="p-6 flex flex-col flex-grow">
                   {item.kategori && (
                     <span className="inline-block px-3 py-1 bg-[#f8cb8b]/20 text-[#1c2c66] text-sm rounded-full mb-3">

@@ -97,7 +97,7 @@ const Hero = () => {
             <div className="inline-flex items-center justify-center w-16 h-16 bg-[#f8cb8b]/20 rounded-full mb-5">
               <FiLayers className="text-2xl text-[#1c2c66]" />
             </div>
-            <div className="text-3xl font-bold text-[#1c2c66] mb-3">500+</div>
+            <div className="text-3xl font-bold text-[#1c2c66] mb-3">10+</div>
             <div className="text-gray-600 font-medium">Layanan Tersedia</div>
           </div>
           

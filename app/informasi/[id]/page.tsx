@@ -1,3 +1,4 @@
+// informasi/[id]/page.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -33,12 +34,15 @@ export default function DetailInformasiPage() {
           return;
         }
         const d = snap.data() as any;
+        const gambarUrl =
+          d?.gambar?.secure_url ?? d?.gambar?.url ?? d?.gambar ?? undefined;
+
         setData({
           id: snap.id,
           judul: d.judul,
           isi: d.isi,
           kategori: d.kategori,
-          gambar: d.gambar,
+          gambar: gambarUrl,
           tanggal: d.tanggal?.toDate?.() ?? undefined,
         });
       } catch (err) {
@@ -73,6 +77,7 @@ export default function DetailInformasiPage() {
               src={data.gambar}
               alt={data.judul}
               className="w-full h-auto object-cover"
+              onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
             />
           </div>
         )}

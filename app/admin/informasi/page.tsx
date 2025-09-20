@@ -1,3 +1,4 @@
+// admin/informasi/page.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -30,12 +31,26 @@ export default function InformasiPage() {
   const [kategori, setKategori] = useState("");
   const [editId, setEditId] = useState<string | null>(null);
 
-  // ambil data dari firestore
+  // ambil data dari firestore dan normalisasi field gambar
   const fetchData = async () => {
     const querySnapshot = await getDocs(collection(db, "informasi"));
-    const data = querySnapshot.docs.map(
-      (docSnap) => ({ id: docSnap.id, ...docSnap.data() } as Informasi)
-    );
+    const data = querySnapshot.docs.map((docSnap) => {
+      const d = docSnap.data() as any;
+      // Normalisasi berbagai bentuk penyimpanan gambar:
+      // - string URL
+      // - object Cloudinary { secure_url }
+      // - object { url }
+      const gambarUrl =
+        d?.gambar?.secure_url ?? d?.gambar?.url ?? d?.gambar ?? "";
+      return {
+        id: docSnap.id,
+        judul: d.judul ?? "",
+        isi: d.isi ?? "",
+        kategori: d.kategori ?? "",
+        gambar: gambarUrl,
+        tanggal: d.tanggal ?? null,
+      } as Informasi;
+    });
     setInformasiList(data);
   };
 
@@ -51,7 +66,7 @@ export default function InformasiPage() {
       let imageUrl = "";
 
       if (gambar) {
-        imageUrl = await uploadImage(gambar); // upload ke cloudinary
+        imageUrl = await uploadImage(gambar); // upload ke cloudinary atau firebase storage
       }
 
       if (editId) {
@@ -62,6 +77,7 @@ export default function InformasiPage() {
           kategori,
           ...(imageUrl && { gambar: imageUrl }),
           tanggal: serverTimestamp(), // update waktu
+          updatedAt: serverTimestamp(),
         });
         setEditId(null);
       } else {
@@ -71,6 +87,8 @@ export default function InformasiPage() {
           kategori,
           gambar: imageUrl,
           tanggal: serverTimestamp(), // simpan waktu saat buat
+          createdAt: serverTimestamp(),
+          updatedAt: serverTimestamp(),
         });
       }
 
@@ -89,7 +107,7 @@ export default function InformasiPage() {
     setJudul(item.judul);
     setIsi(item.isi);
     setKategori(item.kategori || "");
-    setGambar(null); // reset gambar
+    setGambar(null); // reset gambar file input
     setEditId(item.id);
   };
 
@@ -205,12 +223,15 @@ export default function InformasiPage() {
             informasiList.map((item) => (
               <div key={item.id} className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
                 <div className="flex flex-col md:flex-row md:items-start gap-6">
-                  {item.gambar && (
+                  {item.gambar ? (
                     <img
                       src={item.gambar}
                       alt={item.judul}
                       className="w-full md:w-48 h-48 object-cover rounded-lg"
                     />
+                  ) : (
+                    /* tetap tidak merubah tampilan: kalau tidak ada gambar, tidak menampilkan element gambar */
+                    null
                   )}
                   
                   <div className="flex-1">
